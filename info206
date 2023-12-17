@@ -1,0 +1,104 @@
+S=30
+E=100
+F=300
+T=1000
+import random
+import matplot
+
+"""initialisation de la matrice 30x30"""
+
+matrice=[]
+for ligne in range(S):
+    l=[]
+    for colonne in range (S):
+        l.append(0)
+    matrice.append(l)
+
+
+"""initiation des fleurs"""
+
+for nb_fleurs in range(F):
+    random_ligne=random.randint(0,S-1)
+    random_colonne=random.randint(0,S-1)
+    matrice[random_ligne][random_colonne]+=1
+
+"""initiation des escargots"""
+
+liste_escargot=[]
+for _ in range(E):
+    vie=10
+    random_ligne=random.randint(0,S-1)
+    random_colonne=random.randint(0,S-1)
+    liste_escargot.append([random_ligne,random_colonne,vie])
+#E=(ligne,colonne,vie)
+
+"""repetitions"""
+def cases_voisines(ligne,colonne):
+    result=[]
+    for i in range(-1,2):
+        for j in range(-1,2):
+            if (ligne+i)>=0 and (ligne+i)<S and (colonne+j)>=0 and (colonne+j)<S:
+                res.append((ligne+i,colonne+j))
+    return result
+        
+
+def tour_fleurs():
+    m1=[]  #creation de la matrice temporaire à l'intrieur de la fonction
+    for ligne in range(S):
+    l=[]
+    for colonne in range (S):
+        l.append(0)
+    m1.append(l)
+    
+    for ligne in range (S):
+        for colonne in range (S):
+            if matrice [ligne][colonne]>0:
+               #2eme matrice vide dans lquelle on rajoutera temporairement les valeurs des fleurs pour les incorporer ensuite dans l'ancienne matrice
+                cases_vois=cases_voisines(ligne,colonne)
+                    # matrice[ligne][colonne]+= random.randint(0,len(cases_vois))
+                case=random.choice(cases_vois)
+                case_y=case[0]
+                case_x=case[1]
+                m1[case_y][case_x]+=1
+    for ligne in range (S):
+        for colonne in range(S):
+                m1[ligne][colonne]+=m1[ligne][colonne]
+                    
+                    
+def tours_escargots():
+    
+    #for e in range(len(list_escargots)-1,-1,-1):
+    #escargot=liste_escargot[e]
+    #y=escargot[0]
+    #x=escargot[1]
+    #cases_lim=cases_limites(y,x)
+    #cases=random.choice(cases_lim)
+    #escargot[0]=case[0]
+    #escargot[1]=case[1]
+    #if matrice[case[0]][case[1]]==0:
+      #ESCARGOT[2]-=1
+      #if escargot[2]==0:
+         #del liste_escargot[e]
+    #else:
+      #matrice[case[0]][case[1]]
+      #if
+    for escargots in range(E):
+        y=liste_escargot[0]
+        x=liste_escargot[1]
+        cases_vois_bis=cases_vois(y,x)
+        case=random_choice(cases_vois_bis)
+        
+liste_fleurs1=[]      
+def compteur_fleurs():
+    nbre_fleurs=0
+    for ligne in range(S):
+        for colonne in range(S):
+            nbre_fleurs+=matrice[ligne][colonne]
+    return liste_fleurs1.append(nbre_fleurs)
+
+liste_escargots1=[]
+def compteur_escargots():
+    e=liste_escargots.append(len(liste_escargot))
+    return e
+    
+    
